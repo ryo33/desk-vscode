@@ -1,0 +1,25 @@
+{
+    "name": "desk",
+    "displayName": "Desk",
+    "description": "",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.62.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "desk",
+            "aliases": ["Desk", "desk"],
+            "extensions": [".ds"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "desk",
+            "scopeName": "source.desk",
+            "path": "./syntaxes/desk.tmLanguage.json"
+        }]
+    }
+}

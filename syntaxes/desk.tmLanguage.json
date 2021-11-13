@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Desk",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#number"
+    },
+    {
+      "include": "#type"
+    },
+    {
+      "include": "#symbols"
+    },
+    {
+      "include": "#ident"
+    }
+  ],
+  "repository": {
+    "string": {
+      "name": "string.quoted.double.desk",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.desk",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "number": {
+      "name": "constant.numeric.desk",
+      "match": "(-?\\d+\\.?\\d*)|(-?\\d+/-?\\d+)"
+    },
+    "comment": {
+      "name": "comment.block.desk",
+      "begin": "\\(",
+      "end": "\\)",
+      "patterns": [
+        {
+          "name": "comment.block.desk",
+          "match": "[^\\)]*"
+        },
+        {
+          "include": "$self"
+        }
+      ]
+    },
+    "type": {
+      "content_name": "storage.type.desk",
+      "begin": "(<)",
+      "end": "(>)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.brackets.angle.type.desk"
+        }
+      },
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.brackets.angle.type.desk"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#symbols"
+        },
+        {
+          "name": "entity.name.type.number-string.desk",
+          "match": "\\'number|\\'string"
+        },
+        {
+          "name": "entity.name.type.alias.desk",
+          "match": "\\'a\\s+[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]*(\\s*[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]+)*"
+        },
+        {
+          "name": "entity.name.function.brand.desk",
+          "match": "@\\s*[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]*(\\s*[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]+)*"
+        },
+        {
+          "include": "#ident"
+        }
+      ]
+    },
+    "symbols": {
+      "patterns": [
+        {
+          "match": "(,|\\.|{|}|\\[|]|~)",
+          "name": "punctuation.desk"
+        },
+        {
+          "match": "(->|=>|\\\\)",
+          "name": "keyword.operator.desk"
+        },
+        {
+          "match": "(_|\\?)",
+          "name": "constant.language.desk"
+        },
+        {
+          "match": "(\\^|:)",
+          "name": "keyword.other.desk"
+        },
+        {
+          "match": "(\\$|'alias|'type|'import|'export|'module|'file|'quote|`)",
+          "name": "keyword.control.desk"
+        }
+      ]
+    },
+    "ident": {
+      "name": "entity.name.section.ident.desk",
+      "match": "[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]*(\\s*[^@/$<>!#*\\^?\\\\\\[\\]{}_\\-=;:~,.()'\\s][^/$<>!#*\\^?\\\\\\[\\]{}=;:~,.()\\s]+)*"
+    }
+  },
+  "scopeName": "source.desk"
+}
