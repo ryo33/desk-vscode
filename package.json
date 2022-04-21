@@ -13,7 +13,7 @@
         "languages": [{
             "id": "desk",
             "aliases": ["Desk", "desk"],
-            "extensions": [".ds"],
+            "extensions": [".ds", ".dson"],
             "configuration": "./language-configuration.json"
         }],
         "grammars": [{
